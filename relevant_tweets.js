@@ -9,7 +9,7 @@ var client = new Twitter({
   bearer_token: process.env.TWITTER_BEARER_TOKEN
 });
 
-client.get('search/tweets', req.query.text, function(error, tweets, response) {
+client.get('search/tweets', req.params.text, function(error, tweets, response) {
    tweets.statuses.forEach(function(tweet) {
    	console.log("tweet: " + tweet.text)
    });
