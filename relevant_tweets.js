@@ -1,6 +1,7 @@
 require('dotenv').load();
 
 var Twitter = require('twitter');
+var tweet;
 
 var client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -8,7 +9,7 @@ var client = new Twitter({
   bearer_token: process.env.TWITTER_BEARER_TOKEN
 });
 
-client.get('search/tweets', {q: '#ios #swift'}, function(error, tweets, response) {
+client.get('search/tweets', {q: req.params.tweet, count: 50}, function(error, tweets, response) {
    tweets.statuses.forEach(function(tweet) {
    	console.log("tweet: " + tweet.text)
    });
